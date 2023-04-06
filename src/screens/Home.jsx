@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { StatusBar, View } from 'react-native';
 import { Clock, PauseButton, RestartButton } from '../components';
 import { Media } from '../services';
@@ -6,6 +6,8 @@ import { Styles } from '../assets/styles';
 
 const Home = () => {
 	const SOUND_PATH = '../assets/sounds/sound.wav';
+
+	const isInitialMount = useRef(true);
 
 	const [clock, setClock] = useState(120);
 	const [time, setTime] = useState(120);
@@ -16,19 +18,8 @@ const Home = () => {
 	const [audioPlayer, setAudioPlayer] = useState(null);
 	const [songStatus, setSongStatus] = useState(undefined);
 
-	useEffect(async () => {
-		if (isInitialMount.current) {
-			isInitialMount.current = false;
-
-			if (await Media.getPermission()) {
-				const { playback, status } = await Media.play(SOUND_PATH);
-				setAudioPlayer(playback);
-				setSongStatus(status);
-				console.log(playback);
-				console.log(status);
-			}
-		}
-
+	useEffect(() => {
+		initialize();
 		setTime(clock);
 	}, [clock]);
 
@@ -55,6 +46,19 @@ const Home = () => {
 			setTimeoutId(setTimeout(() => setTime(time - 1), 1000));
 		}
 	}, [looping]);
+
+	const initialize = async () => {
+		if (isInitialMount.current) {
+			isInitialMount.current = false;
+			if (await Media.getPermission()) {
+				const { playback, status } = await Media.play(SOUND_PATH);
+				setAudioPlayer(playback);
+				setSongStatus(status);
+				console.log(playback);
+				console.log(status);
+			}
+		}
+	}
 
 	const playSound = async () => {
 		setSongStatus(await audioPlayer.setStatusAsync({ shouldPlay: true }));
