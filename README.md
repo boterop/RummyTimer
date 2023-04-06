@@ -14,7 +14,7 @@
 
 If you have android-studio with android emulator run
 `yarn android`
-If you want it in IOs
+If you want it on IOs
 `yarn ios`
-Or to view it in the web
+Or to view it on the web
 `yarn web`

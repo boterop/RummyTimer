@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Expo Project Base",
-    "slug": "expo_project_base",
+    "name": "Rummy Timer",
+    "slug": "rummy_timer",
     "version": "0.1.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -25,7 +25,7 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.sanbope.expo_project_base"
+      "package": "com.sanbope.rummy_timer"
     },
     "web": {
       "favicon": "./assets/favicon.png"
