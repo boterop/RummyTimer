@@ -5,7 +5,7 @@ import { Media } from '../services';
 import { Styles } from '../assets/styles';
 
 const Home = () => {
-	const SOUND_PATH = "../assets/sounds/sound.wav";
+	const SOUND_PATH = '../assets/sounds/sound.wav';
 
 	const [clock, setClock] = useState(120);
 	const [time, setTime] = useState(120);
@@ -57,7 +57,7 @@ const Home = () => {
 	}, [looping]);
 
 	const playSound = async () => {
-		setSongStatus(await audioPlayer.setStatusAsync({ shouldPlay: true }))
+		setSongStatus(await audioPlayer.setStatusAsync({ shouldPlay: true }));
 	};
 
 	return (

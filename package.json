@@ -9,10 +9,10 @@
 		"build-apk": "eas build -p android",
 		"ios": "expo start --ios",
 		"web": "expo start --web",
-		"format": "prettier --write 'src/**/*.{js,jsx,ts,tsx,css,md,json}'",
+		"format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,css,md,json}\"",
 		"test": "jest --verbose --coverage=false",
 		"coverage": "jest",
-		"check-format": "prettier -c 'src/**/*.{js,jsx,ts,tsx,css,md,json}'"
+		"check-format": "prettier -c \"src/**/*.{js,jsx,ts,tsx,css,md,json}\""
 	},
 	"jest": {
 		"preset": "jest-expo",
