@@ -58,7 +58,7 @@ const Home = () => {
 				console.log(status);
 			}
 		}
-	}
+	};
 
 	const playSound = async () => {
 		setSongStatus(await audioPlayer.setStatusAsync({ shouldPlay: true }));
