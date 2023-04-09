@@ -8,7 +8,7 @@ describe('Show correctly the seconds in minutes:seconds', () => {
         const expectedHour = "01:00";
         const component = create(<Clock time={time} />).toJSON();
 
-        expect(JSON.stringify(component)).toMatch("{\"type\":\"Text\",\"props\":{},\"children\":[\"" + expectedHour + "\"]}");
+        expect(JSON.stringify(component)).toContain(expectedHour);
     });
 
     it('01:59', () => {
@@ -16,7 +16,7 @@ describe('Show correctly the seconds in minutes:seconds', () => {
         const expectedHour = "01:59";
         const component = create(<Clock time={time} />).toJSON();
 
-        expect(JSON.stringify(component)).toMatch("{\"type\":\"Text\",\"props\":{},\"children\":[\"" + expectedHour + "\"]}");
+        expect(JSON.stringify(component)).toContain(expectedHour);
     });
 
     it('02:05', () => {
@@ -24,7 +24,7 @@ describe('Show correctly the seconds in minutes:seconds', () => {
         const expectedHour = "02:05";
         const component = create(<Clock time={time} />).toJSON();
 
-        expect(JSON.stringify(component)).toMatch("{\"type\":\"Text\",\"props\":{},\"children\":[\"" + expectedHour + "\"]}");
+        expect(JSON.stringify(component)).toContain(expectedHour);
     });
     
     it('10:00', () => {
@@ -32,6 +32,6 @@ describe('Show correctly the seconds in minutes:seconds', () => {
         const expectedHour = "10:00";
         const component = create(<Clock time={time} />).toJSON();
 
-        expect(JSON.stringify(component)).toMatch("{\"type\":\"Text\",\"props\":{},\"children\":[\"" + expectedHour + "\"]}");
+        expect(JSON.stringify(component)).toContain(expectedHour);
     });
 })

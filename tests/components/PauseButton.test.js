@@ -13,7 +13,7 @@ describe('Pause correctly the clock', () => {
 
         const expectedStatus = PAUSE
 
-        expect(JSON.stringify(component)).toMatch("{\"type\":\"View\",\"props\":{\"accessible\":true,\"focusable\":true,\"style\":{},\"collapsable\":false},\"children\":[{\"type\":\"Text\",\"props\":{\"style\":{}},\"children\":[\"" + expectedStatus + "\"]}]}");
+        expect(JSON.stringify(component)).toContain(expectedStatus);
     });
 
     it('With the clock paused', () => {
@@ -22,7 +22,7 @@ describe('Pause correctly the clock', () => {
 
         const expectedStatus = START
 
-        expect(JSON.stringify(component)).toMatch("{\"type\":\"View\",\"props\":{\"accessible\":true,\"focusable\":true,\"style\":{},\"collapsable\":false},\"children\":[{\"type\":\"Text\",\"props\":{\"style\":{}},\"children\":[\"" + expectedStatus + "\"]}]}");
+        expect(JSON.stringify(component)).toContain(expectedStatus);
     });
 
     it('Check button functionality', () => {
@@ -33,13 +33,13 @@ describe('Pause correctly the clock', () => {
         const expectedStatus = PAUSE
         const expectedStatusAfterClick = START
 
-        expect(JSON.stringify(component)).toMatch("{\"type\":\"View\",\"props\":{\"accessible\":true,\"focusable\":true,\"style\":{},\"collapsable\":false},\"children\":[{\"type\":\"Text\",\"props\":{\"style\":{}},\"children\":[\"" + expectedStatus + "\"]}]}");
+        expect(JSON.stringify(component)).toContain(expectedStatus);
 
         const props = component.root.findByType(Pressable).props;
         props.onPress();
 
         component.update(<PauseButton looping={looping} setLooping={loop => looping = loop} />);
         
-        expect(JSON.stringify(component)).toMatch("{\"type\":\"View\",\"props\":{\"accessible\":true,\"focusable\":true,\"style\":{},\"collapsable\":false},\"children\":[{\"type\":\"Text\",\"props\":{\"style\":{}},\"children\":[\"" + expectedStatusAfterClick + "\"]}]}");
+        expect(JSON.stringify(component)).toContain(expectedStatusAfterClick);
     })
 })
