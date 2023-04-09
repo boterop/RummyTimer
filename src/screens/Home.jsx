@@ -11,7 +11,7 @@ const Home = () => {
 
 	const [clock, setClock] = useState(120);
 	const [time, setTime] = useState(120);
-	const [looping, setLooping] = useState(true);
+	const [looping, setLooping] = useState(false);
 	const [reset, setReset] = useState(true);
 	const [timeoutId, setTimeoutId] = useState(null);
 

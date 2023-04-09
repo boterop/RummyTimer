@@ -1,6 +1,6 @@
 import React from 'react';
 import { PauseButton } from '../../src/components';
-import { create } from 'react-test-renderer';
+import { act, create } from 'react-test-renderer';
 import { Pressable } from 'react-native';
 
 describe('Pause correctly the clock', () => {
@@ -11,7 +11,7 @@ describe('Pause correctly the clock', () => {
         let looping = true;
         const component = create(<PauseButton looping={looping} setLooping={loop => looping = loop} />).toJSON();
 
-        const expectedStatus = PAUSE
+        const expectedStatus = PAUSE;
 
         expect(JSON.stringify(component)).toContain(expectedStatus);
     });
@@ -20,26 +20,32 @@ describe('Pause correctly the clock', () => {
         let looping = false;
         const component = create(<PauseButton looping={looping} setLooping={loop => looping = loop} />).toJSON();
 
-        const expectedStatus = START
+        const expectedStatus = START;
 
         expect(JSON.stringify(component)).toContain(expectedStatus);
     });
 
     it('Check button functionality', () => {
         let looping = true;
-    
-        const component = create(<PauseButton looping={looping} setLooping={loop => looping = loop} />);
 
-        const expectedStatus = PAUSE
-        const expectedStatusAfterClick = START
+        let component;
+
+        act(() => {
+            component = create(<PauseButton looping={looping} setLooping={loop => looping = loop} />);
+        });
+
+        const expectedStatus = PAUSE;
+        const expectedStatusAfterClick = START;
 
         expect(JSON.stringify(component)).toContain(expectedStatus);
 
         const props = component.root.findByType(Pressable).props;
         props.onPress();
 
-        component.update(<PauseButton looping={looping} setLooping={loop => looping = loop} />);
-        
+        act(() => {
+            component.update(<PauseButton looping={looping} setLooping={loop => looping = loop} />);
+        });
+
         expect(JSON.stringify(component)).toContain(expectedStatusAfterClick);
     })
 })
