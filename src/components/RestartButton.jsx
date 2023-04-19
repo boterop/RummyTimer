@@ -1,10 +1,14 @@
 import React from 'react';
-import { Pressable, Text } from 'react-native';
+import { Pressable } from 'react-native';
 import { Styles } from '../assets/styles';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import { faArrowsRotate } from '@fortawesome/free-solid-svg-icons';
 
 const RestartButton = ({ reset, setReset }) => (
-	<Pressable style={Styles.restartButton} onPress={() => setReset(!reset)}>
-		<Text style={Styles.restartButtonIcon}>RESET</Text>
+	<Pressable
+		style={[Styles.restartButton, Styles.center]}
+		onPress={() => setReset(!reset)}>
+		<FontAwesomeIcon style={Styles.buttonIcon} icon={faArrowsRotate} />
 	</Pressable>
 );
 

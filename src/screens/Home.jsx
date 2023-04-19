@@ -68,10 +68,10 @@ const Home = ({ initialTime = 120, mockMedia = null }) => {
 	};
 
 	return (
-		<View>
+		<View style={[Styles.background, Styles.center]}>
 			<StatusBar hidden />
-			<Clock time={time} setClock={setClock} />
-			<View style={Styles.inline}>
+			<Clock time={time} setClock={setClock} setLooping={setLooping} />
+			<View>
 				<RestartButton reset={reset} setReset={setReset} />
 				<PauseButton looping={looping} setLooping={setLooping} />
 			</View>

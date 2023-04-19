@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Styles } from '../assets/styles';
 import { Pressable, Text, TextInput, View } from 'react-native';
+import { faFloppyDisk } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 
 let currentTime;
 
@@ -22,14 +24,20 @@ const toSeconds = text => {
 	currentTime = isNaN(totalSeconds) ? 0 : totalSeconds;
 };
 
-const Clock = ({ time, setClock }) => {
+const Clock = ({ time, setClock, setLooping }) => {
 	const [isSaveButtonVisible, setIsSaveButtonVisible] = useState(false);
 	const timer = format(time);
 
+	useEffect(() => {
+		if (isSaveButtonVisible) {
+			setLooping(false);
+		}
+	}, [isSaveButtonVisible]);
+
 	return (
-		<View style={Styles.inline}>
+		<View style={Styles.clock}>
 			<TextInput
-				style={Styles.clock}
+				style={Styles.clockTimer}
 				onEndEditing={() => {
 					setClock(currentTime);
 					setIsSaveButtonVisible(false);
@@ -42,12 +50,12 @@ const Clock = ({ time, setClock }) => {
 			</TextInput>
 			{isSaveButtonVisible ? (
 				<Pressable
-					style={Styles.clockButton}
+					style={[Styles.clockButton, Styles.center]}
 					onPress={() => {
 						setClock(currentTime);
 						setIsSaveButtonVisible(false);
 					}}>
-					<Text style={Styles.clockButtonIcon}>SAVE</Text>
+					<FontAwesomeIcon style={Styles.buttonIcon} icon={faFloppyDisk} />
 				</Pressable>
 			) : null}
 		</View>
