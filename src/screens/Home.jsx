@@ -4,13 +4,14 @@ import { Clock, PauseButton, RestartButton } from '../components';
 import { Media } from '../services';
 import { Styles } from '../assets/styles';
 
-const Home = () => {
+const Home = ({ initialTime = 120, mockMedia = null }) => {
 	const SOUND_PATH = '../assets/sounds/sound.wav';
 
 	const isInitialMount = useRef(true);
 
-	const [clock, setClock] = useState(120);
-	const [time, setTime] = useState(120);
+	const mediaPlayer = mockMedia ? mockMedia : Media;
+	const [clock, setClock] = useState(initialTime);
+	const [time, setTime] = useState(initialTime);
 	const [looping, setLooping] = useState(false);
 	const [reset, setReset] = useState(true);
 	const [timeoutId, setTimeoutId] = useState(null);
@@ -19,9 +20,19 @@ const Home = () => {
 	const [songStatus, setSongStatus] = useState(undefined);
 
 	useEffect(() => {
-		initialize();
-		setTime(clock);
-	}, [clock]);
+		(async () => {
+			if (isInitialMount.current) {
+				isInitialMount.current = false;
+				if (await mediaPlayer.getPermission()) {
+					const { playback, status } = await mediaPlayer.play(SOUND_PATH);
+					setAudioPlayer(playback);
+					setSongStatus(status);
+					console.log(playback);
+					console.log(status);
+				}
+			}
+		})();
+	}, []);
 
 	useEffect(() => {
 		if (time <= 0) {
@@ -46,19 +57,6 @@ const Home = () => {
 			setTimeoutId(setTimeout(() => setTime(time - 1), 1000));
 		}
 	}, [looping]);
-
-	const initialize = async () => {
-		if (isInitialMount.current) {
-			isInitialMount.current = false;
-			if (await Media.getPermission()) {
-				const { playback, status } = await Media.play(SOUND_PATH);
-				setAudioPlayer(playback);
-				setSongStatus(status);
-				console.log(playback);
-				console.log(status);
-			}
-		}
-	};
 
 	const playSound = async () => {
 		setSongStatus(await audioPlayer.setStatusAsync({ shouldPlay: true }));

@@ -3,7 +3,7 @@ import { RestartButton } from '../../src/components';
 import { create } from 'react-test-renderer';
 import { Pressable } from 'react-native';
 
-describe('Pause correctly the clock', () => {
+describe('Restart correctly the clock', () => {
     it('Check button functionality', () => {
         let reset = true;
         const expectedStatus = false;

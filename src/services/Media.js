@@ -3,11 +3,11 @@ import * as MediaLibrary from 'expo-media-library';
 
 const getPermission = async () => {
 	const permission = await MediaLibrary.getPermissionsAsync();
+	let response;
 	if (!permission.granted) {
-		const { status } = await MediaLibrary.requestPermissionsAsync();
-		return status === 'granted';
+		response = await MediaLibrary.requestPermissionsAsync();
 	}
-	return 'denied';
+	return response.status === 'granted';
 };
 
 const Media = {
