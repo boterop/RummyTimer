@@ -50,7 +50,7 @@ const Clock = ({ time, setClock, setLooping }) => {
 			</TextInput>
 			{isSaveButtonVisible ? (
 				<Pressable
-					style={[Styles.clockButton, Styles.center]}
+					style={Styles.center}
 					onPress={() => {
 						setClock(currentTime);
 						setIsSaveButtonVisible(false);

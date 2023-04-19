@@ -19,7 +19,6 @@ const Styles = StyleSheet.create({
 	pauseButton: {
 		height: '30%',
 	},
-	clockButton: {},
 	buttonIcon: {
 		color: '#ffffff',
 		fontSize: 50,
