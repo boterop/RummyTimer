@@ -2,7 +2,7 @@
 
 ## Versions
 
-`Nodejs v16.10.0`
+`Nodejs v18.15.0`
 `yarn v1.22.19+`
 `expo-cli v6.0.2+`
 
