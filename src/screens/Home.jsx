@@ -35,6 +35,11 @@ const Home = ({ initialTime = 120, mockMedia = null }) => {
 	}, []);
 
 	useEffect(() => {
+		setLooping(false);
+		setTime(clock);
+	}, [clock]);
+
+	useEffect(() => {
 		if (time <= 0) {
 			playSound();
 		} else if (looping) {
@@ -65,7 +70,7 @@ const Home = ({ initialTime = 120, mockMedia = null }) => {
 	return (
 		<View>
 			<StatusBar hidden />
-			<Clock time={time} setClock={() => setClock} />
+			<Clock time={time} setClock={setClock} />
 			<View style={Styles.inline}>
 				<RestartButton reset={reset} setReset={setReset} />
 				<PauseButton looping={looping} setLooping={setLooping} />
