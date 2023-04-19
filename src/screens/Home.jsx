@@ -41,6 +41,7 @@ const Home = ({ initialTime = 120, mockMedia = null }) => {
 
 	useEffect(() => {
 		if (time <= 0) {
+			setLooping(false);
 			playSound();
 		} else if (looping) {
 			setTimeoutId(setTimeout(() => setTime(time - 1), 1000));

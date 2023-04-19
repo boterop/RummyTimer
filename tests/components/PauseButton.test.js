@@ -2,10 +2,11 @@ import React from 'react';
 import { PauseButton } from '../../src/components';
 import { act, create } from 'react-test-renderer';
 import { Pressable } from 'react-native';
+import { faPause, faPlay } from '@fortawesome/free-solid-svg-icons';
 
 describe('Pause correctly the clock', () => {
-    const START = "START";
-    const PAUSE = "PAUSE";
+    const START = faPlay.icon[4];
+    const PAUSE = faPause.icon[4];
 
     it('With the clock looping', () => {
         let looping = true;

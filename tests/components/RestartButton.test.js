@@ -2,8 +2,11 @@ import React from 'react';
 import { RestartButton } from '../../src/components';
 import { create } from 'react-test-renderer';
 import { Pressable } from 'react-native';
+import { faArrowsRotate } from '@fortawesome/free-solid-svg-icons';
 
 describe('Restart correctly the clock', () => {
+    const RESET = faArrowsRotate.icon[4];
+
     it('Check button functionality', () => {
         let reset = true;
         const expectedStatus = false;
@@ -21,6 +24,6 @@ describe('Restart correctly the clock', () => {
         
         const component = create(<RestartButton reset={reset} setReset={resp => reset = resp} />);
 
-        expect(JSON.stringify(component)).toContain("RESET");
+        expect(JSON.stringify(component)).toContain(RESET);
     });
 })
