@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "Expo Project Base",
-    "slug": "expo_project_base",
-    "version": "0.1.0",
+    "name": "Rummy Timer",
+    "slug": "rummy_timer",
+    "version": "0.1.1",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -21,14 +21,20 @@
       "supportsTablet": true
     },
     "android": {
+      "versionCode": 1,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.sanbope.expo_project_base"
+      "package": "com.sanbope.rummy_timer"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "0f8f8ca3-a212-4409-9853-706279169dc8"
+      }
     }
   }
 }
