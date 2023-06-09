@@ -13,10 +13,8 @@ const getPermission = async () => {
 const Media = {
 	getPermission,
 	play: async uri => {
-		const playback = new Audio.Sound();
-		const status = await playback.loadAsync({ uri: uri }, { shouldPlay: true });
-
-		return { playback, status };
+		const { sound } = await Audio.Sound.createAsync(uri);
+		await sound.playAsync();
 	},
 };
 
