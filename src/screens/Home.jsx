@@ -19,7 +19,7 @@ const Home = ({ initialTime = 120, mockMedia = null }) => {
 	useEffect(() => {
 		if (isInitialMount.current) {
 			isInitialMount.current = false;
-			mediaPlayer.getPermission()
+			mediaPlayer.getPermission();
 		}
 	}, []);
 
