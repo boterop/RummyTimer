@@ -5,7 +5,7 @@ import { Media } from '../services';
 import { Styles } from '../assets/styles';
 
 const Home = ({ initialTime = 120, mockMedia = null }) => {
-	const SOUND_PATH = '../assets/sounds/sound.wav';
+	const SOUND_PATH = require('../assets/sounds/sound.wav');
 
 	const isInitialMount = useRef(true);
 
@@ -16,22 +16,11 @@ const Home = ({ initialTime = 120, mockMedia = null }) => {
 	const [reset, setReset] = useState(true);
 	const [timeoutId, setTimeoutId] = useState(null);
 
-	const [audioPlayer, setAudioPlayer] = useState(null);
-	const [songStatus, setSongStatus] = useState(undefined);
-
 	useEffect(() => {
-		(async () => {
-			if (isInitialMount.current) {
-				isInitialMount.current = false;
-				if (await mediaPlayer.getPermission()) {
-					const { playback, status } = await mediaPlayer.play(SOUND_PATH);
-					setAudioPlayer(playback);
-					setSongStatus(status);
-					console.log(playback);
-					console.log(status);
-				}
-			}
-		})();
+		if (isInitialMount.current) {
+			isInitialMount.current = false;
+			mediaPlayer.getPermission();
+		}
 	}, []);
 
 	useEffect(() => {
@@ -64,8 +53,8 @@ const Home = ({ initialTime = 120, mockMedia = null }) => {
 		}
 	}, [looping]);
 
-	const playSound = async () => {
-		setSongStatus(await audioPlayer.setStatusAsync({ shouldPlay: true }));
+	const playSound = () => {
+		mediaPlayer.play(SOUND_PATH);
 	};
 
 	return (
