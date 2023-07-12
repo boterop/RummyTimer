@@ -48,7 +48,7 @@ const Home = ({ initialTime = 120, mockMedia = null }) => {
 	useEffect(() => {
 		if (!looping) {
 			clearTimeout(timeoutId);
-		} else {
+		} else if (time > 0) {
 			setTimeoutId(setTimeout(() => setTime(time - 1), 1000));
 		}
 	}, [looping]);
