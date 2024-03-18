@@ -49,7 +49,7 @@ jobs:
 
       - name: Tag Release
         run: |
-          version_name=v1.2.2
+          version_name=${GITHUB_REF##*/}
           echo "Tagging release with tag $version_name"
           git tag $version_name
           git push origin --tags
