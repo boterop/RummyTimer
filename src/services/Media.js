@@ -1,33 +1,17 @@
-import { Audio } from 'expo-av';
-import * as MediaLibrary from 'expo-media-library';
+import Sound from 'react-native-sound';
 
-let playback = null;
+let sound = null;
 
-const getPermission = async () => {
-	const permission = await MediaLibrary.getPermissionsAsync();
-	let response;
-	if (!permission.granted) {
-		response = await MediaLibrary.requestPermissionsAsync();
-	}
-	return response.status === 'granted';
-};
+const getPermission = async () => true;
 
 const Media = {
 	getPermission,
 	play: async uri => {
-		if (playback == null) {
-			const { sound } = await Audio.Sound.createAsync(uri);
-			playback = sound;
-			playback.setOnPlaybackStatusUpdate(_onPlaybackStatusUpdate);
+		if (sound == null) {
+			sound = new Sound(uri, Sound.MAIN_BUNDLE);
 		}
-		await playback.playAsync();
+		sound.play()
 	},
-};
-
-_onPlaybackStatusUpdate = async playbackStatus => {
-	if (playbackStatus.didJustFinish) {
-		await playback.stopAsync();
-	}
 };
 
 export default Media;
