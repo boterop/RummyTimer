@@ -76,7 +76,7 @@ android {
 
     namespace "com.rummytimer"
     defaultConfig {
-        applicationId "com.rummytimer"
+        applicationId "com.sanbope.rummy_timer"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
