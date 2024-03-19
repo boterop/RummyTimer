@@ -10,7 +10,7 @@ const Media = {
 		if (sound == null) {
 			sound = new Sound(uri, Sound.MAIN_BUNDLE);
 		}
-		sound.play()
+		sound.play();
 	},
 };
 
