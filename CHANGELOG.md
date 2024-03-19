@@ -1,6 +1,6 @@
 # Changelog
 
-## 1.0.0 (03.18.2024)
+## 1.0.0 (18.03.2024)
 
 - Reduce app weight
 - Media player service swapped

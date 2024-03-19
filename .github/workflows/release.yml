@@ -1,20 +1,22 @@
-name: Test Deploy to Playstore
+name: Release new version
 
 on:
   pull_request:
     branches: 
       - main
-    types: [closed]
+    types: closed
 
 jobs:
-  deploy:
+  release:
     if: ${{ github.event.pull_request.merged }}
     runs-on: ubuntu-latest
 
     steps:
+      - uses: actions/checkout@v4
+      
       - name: Tag Release
         run: |
-          version_name=${GITHUB_REF##*/}
+          version_name=${{ github.event.pull_request.head.ref }}
           echo "Tagging release with tag $version_name"
           git tag $version_name
           git push origin --tags
