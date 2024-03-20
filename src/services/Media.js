@@ -3,11 +3,14 @@ import Sound from 'react-native-sound';
 let sound = null;
 
 const Media = {
-	play: async uri => {
-		if (sound == null) {
-			sound = new Sound(uri, Sound.MAIN_BUNDLE);
+	play: uri => {
+		if (sound !== null) {
+			sound.play();
+			return;
 		}
-		sound.play();
+		sound = new Sound(uri, Sound.MAIN_BUNDLE);
+		sound.setVolume(1);
+		setTimeout(() => sound.play(), 1000);
 	},
 };
 

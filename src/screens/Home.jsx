@@ -20,7 +20,6 @@ const Home = ({ initialTime = 120, mockMedia = null }) => {
 	useEffect(() => {
 		if (isInitialMount.current) {
 			isInitialMount.current = false;
-			console.log(mockMedia, mediaPlayer);
 		}
 	}, []);
 
