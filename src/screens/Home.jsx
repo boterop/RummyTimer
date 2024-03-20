@@ -10,7 +10,7 @@ const Home = ({ initialTime = 120, mockMedia = null }) => {
 
 	const isInitialMount = useRef(true);
 
-	const mediaPlayer = mockMedia || require('../services/Media');
+	const mediaPlayer = mockMedia || require('../services/Media').default;
 	const [clock, setClock] = useState(initialTime);
 	const [time, setTime] = useState(initialTime);
 	const [looping, setLooping] = useState(false);
