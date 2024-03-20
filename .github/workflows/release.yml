@@ -11,15 +11,13 @@ jobs:
     if: ${{ github.event.pull_request.merged }}
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
 
       - name: Create Release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+        uses: ncipollo/release-action@v1.14.0
         with:
-          tag_name: ${{ github.event.pull_request.head.ref }}
-          release_name: ${{ github.event.pull_request.head.ref }}
-          draft: false
-          prerelease: false
+          tag: ${{ github.event.pull_request.head.ref }}
+          name: ${{ github.event.pull_request.head.ref }}
