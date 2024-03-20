@@ -17,3 +17,5 @@ jobs:
         run: yarn check-format
       - name: Run Tests
         run: yarn test
+      - name: Coveralls GitHub Action
+        uses: coverallsapp/github-action@v2
