@@ -2,7 +2,7 @@ name: Release new version
 
 on:
   pull_request:
-    branches: 
+    branches:
       - main
     types: closed
 
@@ -13,10 +13,13 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      
-      - name: Tag Release
-        run: |
-          version_name=${{ github.event.pull_request.head.ref }}
-          echo "Tagging release with tag $version_name"
-          git tag $version_name
-          git push origin --tags
+
+      - name: Create Release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+        with:
+          tag_name: ${{ github.event.pull_request.head.ref }}
+          release_name: ${{ github.event.pull_request.head.ref }}
+          draft: false
+          prerelease: false
