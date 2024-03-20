@@ -1,4 +1,4 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+[![Coverage Status](https://coveralls.io/repos/github/boterop/RummyTimer/badge.svg?branch=main)](https://coveralls.io/github/boterop/RummyTimer?branch=main)
 
 # Getting Started
 

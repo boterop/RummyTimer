@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.1 (20.03.2024)
+
+- Create PlayStore privacy policy
+
 ## 1.0.0 (18.03.2024)
 
 - Reduce app weight

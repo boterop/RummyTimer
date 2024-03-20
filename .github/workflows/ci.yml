@@ -1,4 +1,5 @@
 name: CI
+
 on:
   pull_request:
     types: [closed, review_requested, ready_for_review, synchronize, opened]
@@ -17,3 +18,5 @@ jobs:
         run: yarn check-format
       - name: Run Tests
         run: yarn test
+      - name: Coveralls GitHub Action
+        uses: coverallsapp/github-action@v2
