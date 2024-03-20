@@ -1,6 +1,6 @@
 import React from 'react';
 import { Home } from './screens';
 
-const App = () => <Home />;
+const App = ({ mockMedia = null }) => <Home mockMedia={mockMedia} />;
 
 export default App;

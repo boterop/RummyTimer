@@ -1,15 +1,16 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { StatusBar, View } from 'react-native';
 import { Clock, PauseButton, RestartButton } from '../components';
-import { Media } from '../services';
 import { Styles } from '../styles';
 
 const Home = ({ initialTime = 120, mockMedia = null }) => {
-	const SOUND_PATH = require('../assets/sounds/sound.wav');
+	const SOUND_PATH = mockMedia
+		? 'MOCK_SOUND_PATH'
+		: require('../assets/sounds/sound.wav');
 
 	const isInitialMount = useRef(true);
 
-	const mediaPlayer = mockMedia ? mockMedia : Media;
+	const mediaPlayer = mockMedia || require('../services/Media').default;
 	const [clock, setClock] = useState(initialTime);
 	const [time, setTime] = useState(initialTime);
 	const [looping, setLooping] = useState(false);
@@ -19,7 +20,6 @@ const Home = ({ initialTime = 120, mockMedia = null }) => {
 	useEffect(() => {
 		if (isInitialMount.current) {
 			isInitialMount.current = false;
-			mediaPlayer.getPermission();
 		}
 	}, []);
 
