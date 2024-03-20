@@ -1,4 +1,5 @@
 name: CI
+
 on:
   pull_request:
     types: [closed, review_requested, ready_for_review, synchronize, opened]
