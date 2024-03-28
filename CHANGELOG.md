@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.2 (28.03.2024)
+
+- Fix sound bugs
+
 ## 1.0.1 (20.03.2024)
 
 - Create PlayStore privacy policy
