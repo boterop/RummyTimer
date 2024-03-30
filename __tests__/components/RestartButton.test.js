@@ -13,7 +13,7 @@ describe('Restart correctly the clock', () => {
         
         const component = create(<RestartButton reset={reset} setReset={resp => reset = resp} />);
 
-        const props = component.root.findByType(Pressable).props;
+        const {props} = component.root.findByType(Pressable);
         props.onPress();
 
         expect(reset).toBe(expectedStatus);
