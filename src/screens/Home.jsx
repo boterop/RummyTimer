@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { StatusBar, View } from 'react-native';
 import { Clock, PauseButton, RestartButton } from '../components';
 import { Styles } from '../styles';
+import BackgroundTimer from 'react-native-background-timer';
 
 const Home = ({ initialTime = 120, mockMedia = null }) => {
 	const SOUND_PATH = mockMedia
@@ -11,11 +12,12 @@ const Home = ({ initialTime = 120, mockMedia = null }) => {
 	const isInitialMount = useRef(true);
 
 	const mediaPlayer = mockMedia || require('../services/Media').default;
+
 	const [clock, setClock] = useState(initialTime);
 	const [time, setTime] = useState(initialTime);
 	const [looping, setLooping] = useState(false);
+	const [update, setUpdate] = useState(false);
 	const [reset, setReset] = useState(true);
-	const [timeoutId, setTimeoutId] = useState(null);
 
 	useEffect(() => {
 		if (isInitialMount.current) {
@@ -32,26 +34,26 @@ const Home = ({ initialTime = 120, mockMedia = null }) => {
 		if (time <= 0) {
 			setLooping(false);
 			playSound();
-		} else if (looping) {
-			setTimeoutId(setTimeout(() => setTime(time - 1), 1000));
 		}
 	}, [time]);
 
 	useEffect(() => {
 		if (time < clock) {
-			clearTimeout(timeoutId);
+			BackgroundTimer.stopBackgroundTimer();
+
 			setLooping(true);
+			setUpdate(!update);
 			setTime(clock);
 		}
 	}, [reset]);
 
 	useEffect(() => {
 		if (!looping) {
-			clearTimeout(timeoutId);
+			BackgroundTimer.stopBackgroundTimer();
 		} else if (time > 0) {
-			setTimeoutId(setTimeout(() => setTime(time - 1), 1000));
+			BackgroundTimer.runBackgroundTimer(() => setTime(time => time - 1), 1000);
 		}
-	}, [looping]);
+	}, [looping, update]);
 
 	const playSound = () => {
 		mediaPlayer.play(SOUND_PATH);
