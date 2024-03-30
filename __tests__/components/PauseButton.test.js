@@ -40,7 +40,7 @@ describe('Pause correctly the clock', () => {
 
         expect(JSON.stringify(component)).toContain(expectedStatus);
 
-        const props = component.root.findByType(Pressable).props;
+        const {props} = component.root.findByType(Pressable);
         props.onPress();
 
         act(() => {
