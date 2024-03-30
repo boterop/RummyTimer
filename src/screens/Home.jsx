@@ -22,6 +22,8 @@ const Home = ({ initialTime = 120, mockMedia = null }) => {
 	useEffect(() => {
 		if (isInitialMount.current) {
 			isInitialMount.current = false;
+
+			mediaPlayer.init(SOUND_PATH);
 		}
 	}, []);
 
@@ -55,9 +57,7 @@ const Home = ({ initialTime = 120, mockMedia = null }) => {
 		}
 	}, [looping, update]);
 
-	const playSound = () => {
-		mediaPlayer.play(SOUND_PATH);
-	};
+	const playSound = () => mediaPlayer.play();
 
 	return (
 		<View style={[Styles.background, Styles.center]}>
