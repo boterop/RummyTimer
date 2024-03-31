@@ -19,5 +19,5 @@ jobs:
       - name: Create Release
         uses: ncipollo/release-action@v1.14.0
         with:
-          tag: ${{ github.event.head_commit.message }}
-          name: ${{ github.event.head_commit.message }}
+          tag: ${{ github.event.pull_request.title }}
+          name: ${{ github.event.pull_request.title }}
