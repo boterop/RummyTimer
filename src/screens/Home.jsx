@@ -13,7 +13,7 @@ const Home = ({ initialTime = 120, mockMedia = null }) => {
 	const mediaPlayer = mockMedia || require('../services/Media').default;
 	const BackgroundTimer = mockMedia
 		? require('../__mocks__/BackgroundTimer').default
-		: require('react-native-background-timer').default;
+		: require('@boterop/react-native-background-timer').default;
 
 	const [clock, setClock] = useState(initialTime);
 	const [time, setTime] = useState(initialTime);
