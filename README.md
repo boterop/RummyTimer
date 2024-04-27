@@ -4,6 +4,15 @@
 
 >**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
 
+Install the tools with their respective versions listed in .tool-versions
+
+If you are using asdf as your version manager you can add the plugins
+```bash
+asdf plugin-add java
+asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
+```
+and then install the tools running `asdf install`
+
 ## Step 1: Start the Metro Server
 
 First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
