@@ -27,29 +27,31 @@ const Home = ({ initialTime = 120, mockMedia = null }) => {
 			isInitialMount.current = false;
 
 			mediaPlayer.init(SOUND_PATH);
-			BatteryService.isOptimized().then(isOptimized => {
-				if (isOptimized) {
-					title = 'Restrictions Detected';
-					message =
-						'To make the timer run in background, please remove battery optimizations';
-					Alert.alert(
-						title,
-						message,
-						[
-							{
-								text: 'OK, open settings',
-								onPress: () => BatteryService.openSettings(),
-							},
-							{
-								text: 'Cancel',
-								onPress: () => console.log('Cancel Pressed'),
-								style: 'cancel',
-							},
-						],
-						{ cancelable: false },
-					);
-				}
-			});
+			if (!mockMedia) {
+				BatteryService.isOptimized().then(isOptimized => {
+					if (isOptimized) {
+						title = 'Restrictions Detected';
+						message =
+							'To make the timer run in background, please remove battery optimizations';
+						Alert.alert(
+							title,
+							message,
+							[
+								{
+									text: 'OK, open settings',
+									onPress: () => BatteryService.openSettings(),
+								},
+								{
+									text: 'Cancel',
+									onPress: () => console.log('Cancel Pressed'),
+									style: 'cancel',
+								},
+							],
+							{ cancelable: false },
+						);
+					}
+				});
+			}
 		}
 	}, []);
 
