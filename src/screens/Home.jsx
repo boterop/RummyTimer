@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { StatusBar, View } from 'react-native';
+import { Alert, StatusBar, View } from 'react-native';
 import { Clock, PauseButton, RestartButton } from '../components';
 import { Styles } from '../styles';
+import { BatteryService } from '../services/';
 
 const Home = ({ initialTime = 120, mockMedia = null }) => {
 	const SOUND_PATH = mockMedia
@@ -13,7 +14,7 @@ const Home = ({ initialTime = 120, mockMedia = null }) => {
 	const mediaPlayer = mockMedia || require('../services/Media').default;
 	const BackgroundTimer = mockMedia
 		? require('../__mocks__/BackgroundTimer').default
-		: require('react-native-background-timer').default;
+		: require('@boterop/react-native-background-timer').default;
 
 	const [clock, setClock] = useState(initialTime);
 	const [time, setTime] = useState(initialTime);
@@ -26,6 +27,31 @@ const Home = ({ initialTime = 120, mockMedia = null }) => {
 			isInitialMount.current = false;
 
 			mediaPlayer.init(SOUND_PATH);
+			if (!mockMedia) {
+				BatteryService.isOptimized().then(isOptimized => {
+					if (isOptimized) {
+						title = 'Restrictions Detected';
+						message =
+							'To make the timer run in background, please remove battery optimizations';
+						Alert.alert(
+							title,
+							message,
+							[
+								{
+									text: 'OK, open settings',
+									onPress: () => BatteryService.openSettings(),
+								},
+								{
+									text: 'Cancel',
+									onPress: () => console.log('Cancel Pressed'),
+									style: 'cancel',
+								},
+							],
+							{ cancelable: false },
+						);
+					}
+				});
+			}
 		}
 	}, []);
 
