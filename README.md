@@ -2,7 +2,27 @@
 
 # Getting Started
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+> **Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+
+Install the tools with their respective versions listed in .tool-versions
+
+If you are using asdf as your version manager you can add the plugins
+
+```bash
+asdf plugin-add java
+asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
+```
+
+and then install the tools running `asdf install`
+
+To use yarn install it using `npm install --global yarn`
+
+## Step 0: Setup
+
+To install package dependencies run
+
+- Using yarn: `yarn`
+- Using npm: `npm install`
 
 ## Step 1: Start the Metro Server
 
