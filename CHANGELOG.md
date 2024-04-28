@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.1.0 (28.04.2024)
+
+- Run timer in background
+
 ## 1.0.2 (28.03.2024)
 
 - Fix sound bugs
