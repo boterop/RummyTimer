@@ -1,1 +1,1 @@
-Timer can run in background.
+- Improve background timer to prevent stopping after certain time
