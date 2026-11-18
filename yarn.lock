@@ -1163,10 +1163,10 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
-"@boterop/react-native-background-timer@^2.5.0":
-  version "2.5.0"
-  resolved "https://registry.yarnpkg.com/@boterop/react-native-background-timer/-/react-native-background-timer-2.5.0.tgz#078fe0a2617ef546b95c1571ee680dcca5120d2e"
-  integrity sha512-JQVzqJCdtAsWv8Zn2W17n20O4mCxGwaGPODA1UCIUoUddhawexcHnBK/u9ZhK63ZGQkJzfLM6IPDVQwx3dXaLA==
+"@boterop/react-native-background-timer@^2.7.1":
+  version "2.7.1"
+  resolved "https://registry.yarnpkg.com/@boterop/react-native-background-timer/-/react-native-background-timer-2.7.1.tgz#dc27bcdf70175d9ad72dc15f373b6670b2d3bb14"
+  integrity sha512-aQD4Sz5XvuekRKj2rTyp7OuBGigD8vpLhmGT0dEQ44MyLmvx7S8B6LWoY42VR5S1DoKlQV/R2Q5bHLhlZAPg8Q==
 
 "@eslint-community/eslint-utils@^4.2.0":
   version "4.4.0"

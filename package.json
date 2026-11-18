@@ -13,7 +13,7 @@
 		"check-format": "prettier -c \"src/**/*.{js,jsx,ts,tsx,css,md,json}\""
 	},
 	"dependencies": {
-		"@boterop/react-native-background-timer": "^2.5.0",
+		"@boterop/react-native-background-timer": "^2.7.1",
 		"@fortawesome/fontawesome-svg-core": "^6.5.1",
 		"@fortawesome/free-solid-svg-icons": "^6.5.1",
 		"@fortawesome/react-native-fontawesome": "^0.3.0",
