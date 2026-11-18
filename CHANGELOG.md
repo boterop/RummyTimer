@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.1.1 (18.11.2026)
+
+- Improve background timer to prevent stopping after certain time
+
 ## 1.1.0 (28.04.2024)
 
 - Run timer in background
@@ -31,3 +35,4 @@
 - Edit max time
 - Reset button
 - Pause button
+
